@@ -1,0 +1,910 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <!-- Meta Information -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta name="author" content="Nayuta Solutions">
+        <title>AAoverseas Enterprisers</title>
+    
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="images/favicon.png">
+    
+        <!-- Preconnect for performance -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+        <!-- CSS Stylesheets -->
+        <link rel="stylesheet" href="css/vendors.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="css/icon.min.css">
+        <link rel="stylesheet" href="css/style.min.css">
+        <link rel="stylesheet" href="css/responsive.min.css">
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+        <!-- Inline Style -->
+        <style>
+            .resize-image {
+                width: 150px; 
+                height: 100px;
+                object-fit: contain;
+                object-position: center;
+            }
+            .resize-image1 {
+                width: 150px; 
+                height: 110px;
+                object-fit: contain;
+                object-position: center;
+            }
+            html {
+                scroll-behavior: smooth;
+            } 
+
+            .submit-btn {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+            }
+
+            .submit-btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+            }
+
+            .submit-btn span {
+            display: inline-block;
+            transition: opacity 0.3s ease;
+            }
+
+            .submit-btn .spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #fff;
+            border-top: 3px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            visibility: hidden;
+            }
+
+            .submit-btn.submitting .spinner {
+            opacity: 1;
+            visibility: visible;
+            }
+
+            .submit-btn.submitting span {
+            opacity: 0;
+            }
+
+            .submit-btn.sent {
+            background-color: #28a745;
+            }
+
+            .submit-btn.sent span {
+            opacity: 1;
+            }
+
+            #contact-us {
+                overflow-x: hidden;
+            }
+
+            .row {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .ps-8, .pe-8 {
+                padding-left: 2rem; /* Adjust as needed */
+                padding-right: 2rem;
+            }
+
+            @media (max-width: 768px) {
+                .ps-8, .pe-8 {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+
+            .row {
+                flex-wrap: wrap;
+            }
+
+            .col-12, .col-md-6, .col-xl-12 {
+                max-width: 100%;
+            }
+
+
+            @keyframes spin {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+            }
+        </style>
+    
+        <!-- Scripts -->
+        <script src="https://unpkg.com/feather-icons"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.navbar-nav a').on('click', function(event) {
+                    event.preventDefault();
+                    var target = $(this).attr('href');
+                    var offset = 70; 
+                    if (target === '#contact-us') {
+                        offset = 120; 
+                    }
+                    if (target === '#home') {
+                        offset = 120;
+                    }
+                    $('html, body').animate({
+                        scrollTop: $(target).offset().top - offset
+                    }, 800);
+                });
+                $('#get-quote-button').on('click', function(event) {
+                    event.preventDefault();
+                    var target = '#contact-us';
+                    var offset = 100;
+                    $('html, body').animate({
+                        scrollTop: $(target).offset().top - offset 
+                    }, 800);
+                });
+            });
+        </script>
+    </head>    
+    <body data-mobile-nav-style="classic">
+        <!-- start header -->
+        <header class="header-with-topbar">
+            <!-- start navigation -->
+            <nav class="navbar navbar-expand-lg header-light bg-white header-reverse" data-header-hover="light">
+                <div class="container-fluid"> 
+                    <div class="col-auto">
+                        <a class="navbar-brand">
+                            <img src="images/logo-black.png" data-at2x="images/logo-black.png" alt="" class="default-logo">
+                            <img src="images/logo-black.png" data-at2x="images/logo-black.png" alt="" class="alt-logo">
+                            <img src="images/logo-black.png" data-at2x="images/logo-black.png" alt="" class="mobile-logo">
+                        </a>
+                    </div>
+                    <div class="col-auto menu-order left-nav">
+                        <button class="navbar-toggler float-start" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-line"></span>
+                            <span class="navbar-toggler-line"></span>
+                            <span class="navbar-toggler-line"></span>
+                            <span class="navbar-toggler-line"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li> 
+                                <li class="nav-item"><a href="#about-us" class="nav-link">About us</a></li>
+                                <li class="nav-item"><a href="#products-us" class="nav-link">Products</a></li>
+                                <li class="nav-item"><a href="#contact-us" class="nav-link">Contact us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- end navigation -->
+        </header>
+        <!-- end header -->
+        <!-- start slider -->
+        <section class="p-0 top-space-margin full-screen md-h-600px sm-h-650px" id="home">
+            <div class="swiper h-100 swiper-light-pagination">
+                <div class="swiper-wrapper">
+                    <!-- start slider item -->
+                    <div class="swiper-slide cover-background" style="background-image:url('images/bgimage.jpg');">
+                        <div class="container h-100">
+                            <div class="row align-items-center h-100 xl-ps-10 sm-ps-0">
+                                <div class="col-xxl-7 col-xl-10 text-white elementor-element">
+                                    <div class="text-box">
+                                        <h1 class="fw-600">Bringing the World’s Finest Spices Closer to You with Ease.</h1>
+                                        <div class="fs-20 opacity-6 mb-40px sm-mb-30px">Delivering the finest spices across borders with trust and excellence.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end slider item -->
+                </div>
+                <!-- start slider pagination -->
+                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets d-block d-md-none"></div>
+                <!-- end slider pagination -->
+            </div>
+        </section>
+        
+        <style>
+        .text-box {
+            background: rgba(0, 0, 0, 0.2); /* Semi-transparent background */
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2),
+            0 0 15px rgba(0, 0, 0, 0.2),
+            0 0 30px rgba(0, 0, 0, 0.2);
+            border-radius: 15px; /* Rounded edges */
+            
+        }
+        </style>
+        
+        <section class="pb-70px" id="about-us">
+            <div class="container">
+                <div class="row justify-content-center mb-8 xs-mb-0px">
+                    <div class="col-xl-8 text-center appear anime-child anime-complete" data-anime="{ &quot;el&quot;: &quot;childs&quot;, &quot;translateY&quot;: [-15, 0], &quot;opacity&quot;: [0,1], &quot;duration&quot;: 500, &quot;delay&quot;: 0, &quot;staggervalue&quot;: 100, &quot;easing&quot;: &quot;easeOutQuad&quot; }">             
+                        <h2 class="ls-minus-1px text-dark-gray fw-700 mb-0" style="">About Us</h2>
+                    </div>
+                </div>
+                <div class="row align-items-center align-items-xl-end justify-content-center mb-0px sm-mb-35px">                    
+                    <div class="col-lg-6 col-md-10 md-mb-20px text-lg-start text-center appear anime-child anime-complete" data-anime="{ &quot;el&quot;: &quot;childs&quot;, &quot;translateY&quot;: [30, 0], &quot;opacity&quot;: [0,1], &quot;duration&quot;: 600, &quot;delay&quot;: 0, &quot;staggervalue&quot;: 300, &quot;easing&quot;: &quot;easeOutQuad&quot; }">
+                        <span class="fs-16 lh-22 fw-700 mb-15px d-inline-block text-uppercase text-dark-gray border-bottom border-2 border-color-base-color" style="">Fresh Vision, Redefining the Spice Trade Industry.</span>
+                        <h2 class="text-dark-gray fw-700 mb-0 ls-minus-1px" style="">Delivering the World’s Finest Spices with Precision and Care.</h2>
+                    </div>
+                    <div class="col-xl-5 col-lg-6 col-md-10 offset-xl-1 text-lg-start text-center last-paragraph-no-margin">
+                        <p data-anime="{ &quot;el&quot;: &quot;lines&quot;, &quot;translateY&quot;: [30, 0], &quot;opacity&quot;: [0,1], &quot;duration&quot;: 600, &quot;delay&quot;: 0, &quot;staggervalue&quot;: 300, &quot;easing&quot;: &quot;easeOutQuad&quot;}" class="appear words lines splitting anime-child anime-complete" style="--word-total: 25; --line-total: 3;"><span class="d-inline" style="will-change: inherit;">As a newly established company, we bring a fresh perspective and innovative strategies to the spice export and import industry</span> <span class="d-inline" style="will-change: inherit;">We are committed to building trust and delivering exceptional value to our global clients</span> <span class="d-inline" style="will-change: inherit;">constantly providing excellent solutions.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section> 
+            <div class="container">
+                <div class="row align-items-center mb-0px sm-mb-0px justify-content-md-center"> 
+                    <div class="col-xl-5 col-lg-6 col-md-12 md-mb-50px" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'> 
+                        <span class="fs-16 lh-22 fw-700 mb-10px d-inline-block text-uppercase text-dark-gray border-bottom border-2 border-color-base-color">Why choose us?</span>
+                        <h2 class="text-dark-gray fw-700 mb-20px ls-minus-1px">Preserving Flavor, Delivering Quality</h2>
+                        <div class="row justify-content-center mb-25px">
+                            <div class="col-12">
+                                <div class="accordion accordion-style-02" id="accordion-style-02" data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus">
+                                    <!-- start accordion item -->
+                                    <div class="accordion-item active-accordion">
+                                        <div class="accordion-header border-bottom">
+                                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-01" aria-expanded="true" data-bs-parent="#accordion-style-02">
+                                                <div class="accordion-title text-dark-gray sm-pe-0">
+                                                    <img src="images/icon-01.jpg" class="me-10px" alt="">
+                                                    <span class="fw-600 fs-20">Premium Quality Assurance</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div id="accordion-style-02-01" class="accordion-collapse collapse show" data-bs-parent="#accordion-style-02">
+                                            <div class="accordion-body last-paragraph-no-margin border-bottom sm-pe-0">
+                                                <p>We source the finest spices directly from trusted farms, ensuring exceptional quality and flavor for our global customers.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end accordion item -->
+                                    <!-- start accordion item -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header border-bottom">
+                                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-02" aria-expanded="false" data-bs-parent="#accordion-style-02">
+                                                <div class="accordion-title text-dark-gray sm-pe-0">
+                                                    <img src="images/icon-02.jpg" class="me-10px" alt="">
+                                                    <span class="fw-600 fs-20">End-to-End Export Solutions</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div id="accordion-style-02-02" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
+                                            <div class="accordion-body last-paragraph-no-margin border-bottom sm-pe-0">
+                                                <p>From procurement to shipping, we handle every step with precision, making international spice trade seamless and hassle-free.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end accordion item -->
+                                    <!-- start accordion item -->
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">
+                                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-03" aria-expanded="false" data-bs-parent="#accordion-style-02">
+                                                <div class="accordion-title text-dark-gray sm-pe-0">
+                                                    <img src="images/icon-03.jpg" class="me-10px" alt="">
+                                                    <span class="fw-600 fs-20">Stringent Quality Checks</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div id="accordion-style-02-03" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
+                                            <div class="accordion-body last-paragraph-no-margin sm-pe-0">
+                                                <p>Every batch of spices is carefully inspected to meet international standards before it reaches your doorstep.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end accordion item -->
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="col-xl-6 col-lg-6 offset-xl-1 position-relative">
+                        <div class="w-80 ms-auto" data-animation-delay="500" data-shadow-animation="true" data-bottom-top="transform: translateY(50px)" data-top-bottom="transform: translateY(-50px)">
+                            <img src="images/con.jpg" alt="" class="border-radius-10px w-100">
+                        </div>
+                        <div class="w-60 overflow-hidden position-absolute left-15px bg-transparent bottom-20px" data-shadow-animation="true" data-animation-delay="150" data-bottom-top="transform: translateY(-20px)" data-top-bottom="transform: translateY(50px)">
+                            <img src="images/farm.jpg" alt="" class="border-radius-10px box-shadow-quadruple-large" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="row justify-content-center mb-5 xs-mb-35px">
+                    <div class="col-xl-8 text-center appear anime-child anime-complete" data-anime="{ &quot;el&quot;: &quot;childs&quot;, &quot;translateY&quot;: [-15, 0], &quot;opacity&quot;: [0,1], &quot;duration&quot;: 500, &quot;delay&quot;: 0, &quot;staggervalue&quot;: 100, &quot;easing&quot;: &quot;easeOutQuad&quot; }">
+                        <span class="fs-16 lh-22 fw-700 mb-15px d-inline-block text-uppercase text-dark-gray border-bottom border-2 border-color-base-color" style="">Why Choose Us our  industry</span>
+                        <h2 class="ls-minus-1px text-dark-gray fw-700 mb-0" style="">Fields of expertise</h2>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-xl-4 row-cols-sm-2 mb-5 appear anime-child anime-complete" data-anime="{ &quot;el&quot;: &quot;childs&quot;, &quot;translateY&quot;: [-15, 0], &quot;perspective&quot;: [1200,1200], &quot;scale&quot;: [1.1, 1], &quot;rotateX&quot;: [50, 0], &quot;opacity&quot;: [0,1], &quot;duration&quot;: 500, &quot;delay&quot;: 300, &quot;staggervalue&quot;: 300, &quot;easing&quot;: &quot;easeOutQuad&quot; }">
+                    <!-- start features box item -->
+                    <div class="col icon-with-text-style-04 transition-inner-all lg-mb-30px" style="">
+                        <div class="feature-box bg-white text-center border-radius-8px p-15 box-shadow-extra-large box-shadow-extra-large-hover">
+                            <div class="feature-box-icon mb-20px">
+                                <img alt="" src="images/icon-04.png" data-no-retina="">
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="fs-20 fw-600 d-inline-block text-dark-gray mb-5px">Quality</span>
+                                <p class="mx-auto lg-w-80 md-w-100">Premium-grade spices sourced globally for unmatched flavor.</p>
+                            </div>
+                        </div>  
+                    </div>
+                    <!-- end features box item -->
+                    <!-- start features box item -->
+                    <div class="col icon-with-text-style-04 transition-inner-all lg-mb-30px" style="">
+                        <div class="feature-box bg-white text-center border-radius-8px p-15 box-shadow-extra-large box-shadow-extra-large-hover">
+                            <div class="feature-box-icon mb-20px">
+                                <img alt="" src="images/icon-05.png" data-no-retina="">
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="fs-20 fw-600 d-inline-block text-dark-gray mb-5px">Expertise</span>
+                                <p class="mx-auto lg-w-80 md-w-100">Emerging leaders in the spice trade with a fresh approach.</p>
+                            </div>
+                        </div>  
+                    </div>
+                    <!-- end features box item -->
+                    <!-- start features box item -->
+                    <div class="col icon-with-text-style-04 transition-inner-all xs-mb-30px" style="">
+                        <div class="feature-box bg-white text-center border-radius-8px p-15 box-shadow-extra-large box-shadow-extra-large-hover">
+                            <div class="feature-box-icon mb-20px">
+                                <img alt="" src="images/icon-06.png" data-no-retina="">
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="fs-20 fw-600 d-inline-block text-dark-gray mb-5px">Network</span>
+                                <p class="mx-auto lg-w-80 md-w-100">Vast supply chain ensuring timely global deliveries.</p>
+                            </div>
+                        </div>  
+                    </div>
+                    <!-- end features box item -->
+                    <!-- start features box item -->
+                    <div class="col icon-with-text-style-04 transition-inner-all" style="">
+                        <div class="feature-box bg-white text-center border-radius-8px p-15 box-shadow-extra-large box-shadow-extra-large-hover">
+                            <div class="feature-box-icon mb-20px">
+                                <img alt="" src="images/icon-07.png" data-no-retina="">
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="fs-20 fw-600 d-inline-block text-dark-gray mb-5px">Storage</span>
+                                <p class="mx-auto lg-w-80 md-w-100">Hygienic warehousing to preserve spice freshness.</p>
+                            </div>
+                        </div>  
+                    </div>
+                    <!-- end features box item -->
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+        <section  class="overflow-hidden bg-very-light-gray" id="products-us">
+            <div class="container">
+                <div class="row justify-content-center mb-3 xs-mb-2">
+                    <div class="col-lg-7 text-center" data-anime='{ "el": "childs", "opacity": [0, 1], "translateY": [0, 0], "staggervalue": 200, "easing": "easeInOutSine" }'>
+                        <span class="fs-16 lh-22 fw-700 mb-10px d-inline-block text-uppercase text-dark-gray border-bottom border-2 border-color-base-color">Professional services</span>
+                        <h2 class="text-dark-gray fw-700 mb-0 ls-minus-1px">Products</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 position-relative">
+                        <div class="outside-box-right-50 md-outside-box-right-70 sm-outside-box-right-0" data-anime='{ "translateX": [100, 0], "opacity": [0,1], "duration": 800, "delay": 100, "staggervalue": 250, "easing": "easeOutQuad" }'>
+                            <div class="swiper ps-30px pe-30px sm-ps-0 sm-pe-0" data-slider-options='{ "slidesPerView": 1, "spaceBetween": 35, "loop": true, "autoplay": { "delay": 3000, "disableOnInteraction": false },  "pagination": { "el": ".slider-four-slide-pagination-1", "clickable": true, "dynamicBullets": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1200": { "slidesPerView": 3 }, "992": { "slidesPerView": 2, "spaceBetween": 50 }, "768": { "slidesPerView": 2, "spaceBetween": 40 }, "320": { "slidesPerView": 1 } }, "effect": "slide" }'>
+                                <div class="swiper-wrapper pt-30px pb-30px">
+                                    <!-- start slider item --> 
+                                    <div class="swiper-slide">
+                                        <div class="row g-0 services-box-style-02"> 
+                                            <div class="col-sm-6 services-box bg-white p-10 xxl-p-8 xl-p-6 box-shadow-extra-large">
+                                                <div class="services-box-icon">
+                                                    <img src="images/jira-icon.png" alt="image" width="90px" height="95px">
+                                                </div>
+                                                <div class="services-box-content">
+                                                    <h4 class="d-inline-block text-dark-gray fs-22 fw-700 mb-5px">Jeera</h4>
+                                                    <p class="mb-15px">Superior quality seeds known for their warm, earthy taste and purity.</p>
+                                                    
+                                                </div> 
+                                            </div> 
+                                            <div class="col-sm-6 services-box-img xs-h-300px">
+                                                <div class="h-100 cover-background" style="background-image: url(images/jira.jpg)"></div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <!-- end slider item -->
+                                    <!-- start slider item --> 
+                                    <div class="swiper-slide">
+                                        <div class="row g-0 services-box-style-02"> 
+                                            <div class="col-sm-6 services-box bg-white p-10 xxl-p-8 xl-p-6 box-shadow-extra-large">
+                                                <div class="services-box-icon">
+                                                    <img src="images/turmaric-icon.png" alt="image" width="100px" height="105px">
+                                                </div>
+                                                <div class="services-box-content">
+                                                    <h4 class="d-inline-block text-dark-gray fs-22 fw-700 mb-5px">Turmeric</h4>
+                                                    <p class="mb-15px">Sourced from premium farms, ensuring vibrant color and rich aroma.</p>
+                                                    
+                                                </div> 
+                                            </div> 
+                                            <div class="col-sm-6 services-box-img xs-h-300px">
+                                                <div class="h-100 cover-background" style="background-image: url(images/turmuric.jpg)"></div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <!-- end slider item -->
+                                    <!-- start slider item --> 
+                                    <div class="swiper-slide">
+                                        <div class="row g-0 services-box-style-02"> 
+                                            <div class="col-sm-6 services-box bg-white p-10 xxl-p-8 xl-p-6 box-shadow-extra-large">
+                                                <div class="services-box-icon">
+                                                    <img src="images/redchilli-icon.png" alt="image" width="70px">
+                                                </div>
+                                                <div class="services-box-content">
+                                                    <h4 class="d-inline-block text-dark-gray fs-22 fw-700 mb-5px">Red Chilli</h4>
+                                                    <p class="mb-10px">Handpicked for intense heat and bold flavor, perfect for global cuisines.</p>
+                                                    
+                                                </div> 
+                                            </div> 
+                                            <div class="col-sm-6 services-box-img xs-h-300px">
+                                                <div class="h-100 cover-background" style="background-image: url(images/redchilli.jpg)"></div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <!-- end slider item -->
+                                    <!-- start slider item --> 
+                                    <div class="swiper-slide">
+                                        <div class="row g-0 services-box-style-02"> 
+                                            <div class="col-sm-6 services-box bg-white p-10 xxl-p-8 xl-p-6 box-shadow-extra-large">
+                                                <div class="services-box-icon">
+                                                    <img src="images/clove-icon.jpg" alt="image" width="65px" height="65px">
+                                                </div>
+                                                <div class="services-box-content">
+                                                    <h4 class="d-inline-block text-dark-gray fs-22 fw-700 mb-5px">Clove</h4>
+                                                    <p class="mb-10px">Freshly harvested to deliver unmatched fragrance and medicinal benefits.</p>
+                                                    
+                                                </div> 
+                                            </div> 
+                                            <div class="col-sm-6 services-box-img xs-h-300px">
+                                                <div class="h-100 cover-background" style="background-image: url(images/clove.jpeg)"></div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <!-- end slider item -->
+                                    <!-- start slider item --> 
+                                    <div class="swiper-slide">
+                                        <div class="row g-0 services-box-style-02"> 
+                                            <div class="col-sm-6 services-box bg-white p-10 xxl-p-8 xl-p-6 box-shadow-extra-large">
+                                                <div class="services-box-icon">
+                                                    <img src="images/rice-icon.png" alt="image" width="130px">
+                                                </div>
+                                                <div class="services-box-content">
+                                                    <h4 class="d-inline-block text-dark-gray fs-22 fw-700 mb-5px">Rice</h4>
+                                                    <p class="mb-15px">A staple grain with a soft, fluffy texture and rich in carbohydrates.</p>
+                                                    
+                                                </div> 
+                                            </div> 
+                                            <div class="col-sm-6 services-box-img xs-h-300px">
+                                                <div class="h-100 cover-background" style="background-image: url(images/rice.jpg)"></div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <!-- end slider item -->
+                                    <!-- start slider item --> 
+                                    <div class="swiper-slide">
+                                        <div class="row g-0 services-box-style-02"> 
+                                            <div class="col-sm-6 services-box bg-white p-10 xxl-p-8 xl-p-6 box-shadow-extra-large">
+                                                <div class="services-box-icon">
+                                                    <img src="images/wheatflour-icon.png" alt="image" width="65px">
+                                                </div>
+                                                <div class="services-box-content">
+                                                    <h4 class="d-inline-block text-dark-gray fs-22 fw-700 mb-5px">Wheat Flour</h4>
+                                                    <p class="mb-15px">A finely ground powder with a high gluten content, ideal for baking and cooking.</p>
+                                                    
+                                                </div> 
+                                            </div> 
+                                            <div class="col-sm-6 services-box-img xs-h-300px">
+                                                <div class="h-100 cover-background" style="background-image: url(images/wheatflour.jpg)"></div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <!-- end slider item -->
+                                    <!-- start slider item --> 
+                                    <div class="swiper-slide">
+                                        <div class="row g-0 services-box-style-02"> 
+                                            <div class="col-sm-6 services-box bg-white p-10 xxl-p-8 xl-p-6 box-shadow-extra-large">
+                                                <div class="services-box-icon">
+                                                    <img src="images/ginger-icon.png" alt="image" width="75px">
+                                                </div>
+                                                <div class="services-box-content">
+                                                    <h4 class="d-inline-block text-dark-gray fs-22 fw-700 mb-5px">Ginger</h4>
+                                                    <p class="mb-15px">A pungent, aromatic root known for its spicy, medicinal, and digestive properties.</p>
+                                                    
+                                                </div> 
+                                            </div> 
+                                            <div class="col-sm-6 services-box-img xs-h-300px">
+                                                <div class="h-100 cover-background" style="background-image: url(images/ginger.jpg)"></div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <!-- end slider item -->
+                                </div> 
+                            </div>
+                        </div>
+                        <!-- start slider pagination -->
+                        <!--<div class="swiper-pagination slider-four-slide-pagination-1 swiper-pagination-style-2 swiper-pagination-clickable swiper-pagination-bullets"></div>-->
+                        <!-- end slider pagination -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+        <!-- start section -->
+        <section class="overflow-hidden">
+            <div class="container" >
+                <div class="row justify-content-center mb-5 xs-mb-35px">
+                    <div class="col-xl-8 text-center appear anime-child anime-complete" data-anime="{ &quot;el&quot;: &quot;childs&quot;, &quot;translateY&quot;: [-15, 0], &quot;opacity&quot;: [0,1], &quot;duration&quot;: 500, &quot;delay&quot;: 0, &quot;staggervalue&quot;: 100, &quot;easing&quot;: &quot;easeOutQuad&quot; }">
+
+                        <h2 class="ls-minus-1px text-dark-gray fw-700 mb-0">Certifications</h2>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 clients-style-04 justify-content-center appear anime-complete" data-anime="{&quot;opacity&quot;: [0,1], &quot;duration&quot;: 400, &quot;delay&quot;: 300, &quot;staggervalue&quot;: 300, &quot;easing&quot;: &quot;easeOutQuad&quot; }" style="">
+                    <!-- start client item -->
+                    <div class="col text-center transition-inner-all lg-mb-30px">
+                        <div class="client-box">
+                            <img src="images/FSSAI.001.png" class="resize-image">
+                        </div>
+                    </div>
+                    <!-- end client item -->
+                    <!-- start client item -->
+                    <div class="col text-center transition-inner-all lg-mb-30px">
+                        <div class="client-box">
+                            <img src="images/halal.png" class="resize-image">
+                        </div>
+                    </div>
+                    <!-- end client item -->
+                    <!-- start client item -->
+                    <div class="col text-center transition-inner-all lg-mb-30px">
+                        <div class="client-box">
+                            <img src="images/ISO.png" class="resize-image1">
+                        </div>
+                    </div>
+                    <!-- end client item -->
+                    <!-- start client item -->
+                    <div class="col text-center transition-inner-all sm-mb-30px">
+                        <div class="client-box">
+                            <img src="images/spicesboard.png" class="resize-image1">
+                        </div>
+                    </div>
+                    <!-- end client item -->
+                    <!-- end client item --> 
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+        <section class="position-relative overflow-hidden overlap-height pb-0">
+            <div class="container overlap-gap-section">  
+                <div class="row align-items-center justify-content-lg-start justify-content-center text-lg-start text-center">
+                    <div class="col-lg-6 col-md-10 md-mb-50px">
+                        <figure class="position-relative m-0 md-w-95 xs-w-90">
+                            <img src="images/spice-in-india.jpg" class="w-90 border-radius-8px" alt="" data-no-retina="">
+                            <figcaption class="position-absolute border-radius-10px box-shadow-quadruple-large bottom-100px xs-bottom-minus-10px right-minus-30px w-240px xs-w-200px text-center last-paragraph-no-margin animation-float">
+                                <div class="bg-white pt-35px pb-35px xs-p-20px border-radius-8px mb-10px">
+                                    <h2 class="fw-700 ls-minus-2px text-dark-gray mb-0">4.9</h2>
+                                    <div class="text-golden-yellow fs-18 ls-2px mb-5px">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <span class="text-dark-gray d-block fw-600 ls-minus-05px">3488 Reviews</span>
+                                    <div class="d-inline-block fs-11 text-uppercase bg-jungle-green ps-20px pe-20px lh-30 fw-600 text-white border-radius-100px box-shadow-large">Excellent score</div>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-lg-5 col-md-10 offset-lg-1 appear anime-complete" data-anime="{ &quot;translateY&quot;: [0, 0], &quot;opacity&quot;: [0,1], &quot;duration&quot;: 1200, &quot;delay&quot;: 0, &quot;staggervalue&quot;: 150, &quot;easing&quot;: &quot;easeOutQuad&quot; }" style="">
+                        <span class="fs-16 lh-22 fw-700 mb-15px d-inline-block text-uppercase text-dark-gray border-bottom border-2 border-color-base-color">A few good reasons</span>
+                        <h2 class="fw-700 text-dark-gray ls-minus-1px">Here is what our clients have to say.</h2>
+                        <div class="swiper position-relative swiper-fade swiper-initialized swiper-horizontal swiper-autoheight swiper-watch-progress swiper-backface-hidden" data-slider-options="{ &quot;autoHeight&quot;: true, &quot;loop&quot;: true, &quot;allowTouchMove&quot;: true, &quot;autoplay&quot;: { &quot;delay&quot;: 4000, &quot;disableOnInteraction&quot;: false }, &quot;navigation&quot;: { &quot;nextEl&quot;: &quot;.swiper-button-next&quot;, &quot;prevEl&quot;: &quot;.swiper-button-prev&quot; }, &quot;effect&quot;: &quot;fade&quot; }">
+                            <div class="swiper-wrapper mb-40px" id="swiper-wrapper-1994c44b5a9ab6d5" aria-live="off" style="height: 245px; transition-duration: 0ms; transition-delay: 0ms;">
+                            <div class="swiper-slide review-style-08 swiper-slide-next" role="group" aria-label="3 / 3" style="width: 478px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;" data-swiper-slide-index="2">
+                                    <p class="w-80 lg-w-100">The quality of spices is outstanding! Every product is fresh and adds authentic flavors to my dishes. The seamless delivery process makes it even better!</p>
+                                    <div class="mt-20px">
+                                        <img class="w-110px me-15px" src="images/demo-corporate-testimonials-03.png" alt="" data-no-retina="">
+                                        <div class="d-inline-block align-middle text-start">
+                                            <div class="text-dark-gray fw-600 fs-20">Mark Joseph</div>
+                                            <div class="review-star-icon fs-18">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                            </div> 
+                                        </div>
+                                    </div> 
+                                </div><div class="swiper-slide review-style-08 swiper-slide-prev" role="group" aria-label="1 / 3" style="width: 478px; opacity: 1; transform: translate3d(-478px, 0px, 0px); transition-duration: 0ms;" data-swiper-slide-index="0">
+                                    <p class="w-80 lg-w-100">Exceptional service and top-notch spices! Their attention to quality and detail is truly commendable. Highly recommended for any spice needs!</p>
+                                    <div class="mt-20px">
+                                        <img class="w-110px me-15px" src="images/demo-corporate-testimonials-01.png" alt="" data-no-retina="">
+                                        <div class="d-inline-block align-middle text-start">
+                                            <div class="text-dark-gray fw-600 fs-20">John Doe</div>
+                                            <div class="review-star-icon fs-18">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                            </div> 
+                                        </div>
+                                    </div> 
+                                </div><div class="swiper-slide review-style-08 swiper-slide-visible swiper-slide-fully-visible swiper-slide-active" role="group" aria-label="2 / 3" style="width: 478px; opacity: 1; transform: translate3d(-956px, 0px, 0px); transition-duration: 0ms;" data-swiper-slide-index="1">
+                                    <p class="w-80 lg-w-100">A reliable partner for importing premium spices. Their products always meet my expectations, and the customer support is fantastic!</p>
+                                    <div class="mt-20px">
+                                        <img class="w-110px me-15px" src="images/demo-corporate-testimonials-02.png" alt="" data-no-retina="">
+                                        <div class="d-inline-block align-middle text-start">
+                                            <div class="text-dark-gray fw-600 fs-20">Shoko mugikura</div>
+                                            <div class="review-star-icon fs-18">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                            </div> 
+                                        </div>
+                                    </div> 
+                                </div></div> 
+                            <div class="d-flex justify-content-lg-start justify-content-center">
+                                <!-- start slider navigation -->
+                                <div class="slider-one-slide-prev-1 swiper-button-prev slider-navigation-style-04 border border-color-extra-medium-gray" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-1994c44b5a9ab6d5"><i class="fa-solid fa-arrow-left text-dark-gray icon-small"></i></div>
+                                <div class="slider-one-slide-next-1 swiper-button-next slider-navigation-style-04 border border-color-extra-medium-gray" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-1994c44b5a9ab6d5"><i class="fa-solid fa-arrow-right text-dark-gray icon-small"></i></div>
+                                <!-- end slider navigation --> 
+                            </div>
+                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div>
+            </div>
+        </section>
+        <!-- start section -->
+        <section class="ps-8 pe-8 lg-ps-4 lg-pe-4 md-ps-0 md-pe-0 py-0" id="contact-us">
+            <div class="row row-cols-md-1 justify-content-start">
+                <div class="col-xl-auto">
+                    <div class="bg-very-light-gray p-8 border-radius-10px">
+                        <div class="row">
+                            <div class="col-12 text-center mb-6">
+                                <span class="fs-16 lh-22 fw-700 mb-15px d-inline-block text-uppercase text-dark-gray border-bottom border-2 border-color-base-color">Get in touch with us</span>
+                                <h2 class="text-dark-gray mb-0 fw-700 ls-minus-1px">How we can help you?</h2>
+                            </div>
+                        </div>
+                        <!-- start contact form -->
+                        <form action="contacts.php" method="post" class="row contact-form-style-01" id="contactForm">
+                            <div class="col-md-6 mb-20px">
+                                <div class="position-relative form-group">
+                                    <span class="form-icon"><i class="bi bi-person"></i></span>
+                                    <input class="input-name form-control required" type="text" id="name" name="name" placeholder="Your name*" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-20px">
+                                <div class="position-relative form-group">
+                                    <span class="form-icon"><i class="bi bi-telephone-outbound"></i></span>
+                                    <input class="form-control" type="tel" name="number" id="number" placeholder="Your phone" />
+                                </div>                                        
+                            </div>
+                            <div class="col-md-6 mb-20px">
+                                <div class="position-relative form-group">
+                                    <span class="form-icon"><i class="bi bi-envelope"></i></span>
+                                    <input class="form-control required" type="email" name="email" id="email" placeholder="Your email address*" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-20px">
+                                <div class="position-relative form-group">
+                                    <span class="form-icon"><i class="bi bi-journals"></i></span>
+                                    <input class="form-control" type="text" name="subject" placeholder="Your subject" />
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-30px">
+                                <div class="position-relative form-group form-textarea">
+                                    <span class="form-icon"><i class="bi bi-chat-square-dots"></i></span>
+                                    <textarea class="form-control required" cols="40" rows="4" name="message" id="message" placeholder="Your message" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-xl-7 col-md-7 last-paragraph-no-margin">
+                                <p class="text-center text-md-start fs-16 lh-24">We are committed to protecting your privacy. We will never collect information about you without your explicit consent.</p>
+                            </div>
+                            <div class="col-xl-5 col-md-5 text-center text-md-end sm-mt-20px">
+                                <button class="btn btn-large btn-dark-gray btn-box-shadow btn-round-edge btn-switch-text left-icon submit submit-btn" type="submit" id="submitButton">
+                                    <span>
+                                        <span class="btn-double-text" data-text="Send message">Send message</span>
+                                    </span>
+                                    <div class="spinner"></div>
+                                </button>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-results mt-20px d-none"></div>
+                            </div>  
+                        </form>
+                        <!-- end contact form -->
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center mt-2 mb-5">
+                    <div class="col-md-auto text-center text-md-end sm-mb-20px">
+                        <h6 class="text-dark-gray fw-600 mb-0">Connect with social media </h6>
+                    </div>
+                    <div class="col-2 d-none d-lg-inline-block">
+                        <span class="w-100 h-1px bg-dark-gray opacity-2 d-flex mx-auto"></span>
+                    </div>
+                    <!-- start social icon -->
+                    <div class="col-md-auto elements-social social-icon-style-04 text-center text-md-start ps-lg-0">
+                        <ul class="large-icon dark">
+                            <li class="m-0"><a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i><span></span></a></li>
+                            <li class="m-0"><a class="twitter" href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i><span></span></a></li>      
+                            <li class="m-0"><a class="instagram" href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i><span></span></a></li>
+                            <li class="m-0"><a class="linkedin" href="http://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i><span></span></a></li>
+                        </ul>                  
+                    </div>
+                    <!-- end social icon -->
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+        <!-- start footer --> 
+        <footer class="fs-17 footer-dark p-5 bg-dark-gray"> 
+            <div class="container"> 
+                <div class="row justify-content-center pt-0 sm-pt-40px text-sm-start text-center">
+                    <!-- start footer column -->
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 md-mb-30px">
+                        <a href="#" class="footer-logo mb-20px d-inline-block"> 
+                            <img src="images/logo-white.png" data-at2x="images/logo-white.png" alt="" width="300" height="300" />
+                        </a>
+                        <p class="fs-17 mx-auto xs-w-90">Premium spices, globally delivered with quality and care
+                            .</p> 
+                        <div class="row align-items-center border border-color-transparent-white-light g-0 border-radius-4px">
+                            <div class="col-5 text-center"><h2 class="text-white fw-700 mb-0">4.9</h2></div>
+                            <div class="col-7 border-start border-color-transparent-white-light ps-20px pe-20px pt-15px pb-15px lg-ps-15px lg-pe-15px text-center text-sm-start">
+                                <div class="review-star-icon">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                </div>
+                                <span class="d-block fs-18">30k Reviews</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end footer column -->
+                    <!-- start footer column -->
+                    <div class="col-lg-2 col-md-3 col-sm-5 offset-xl-1 offset-md-0 offset-sm-1 md-mb-30px">
+                        <span class="fs-18 d-block text-white fw-500 mb-10px">Our Products</span>
+                        <ul>
+                            <li><a href="#products-us">Clove</a></li>
+                            <li><a href="#products-us">Red Chillies</a></li>
+                            <li><a href="#products-us">Turmeric</a></li>
+                            <li><a href="#products-us">Jeera </a></li>
+                            <li><a href="#products-us">Pepper</a></li>
+                        </ul>
+                    </div>
+                    <!-- end footer column -->
+                    <!-- start footer column -->
+                    <div class="col-lg-3 col-md-4 col-sm-5 offset-md-0 offset-sm-1 order-5 order-md-3 xs-mb-30px">
+                        <span class="fs-18 d-block text-white fw-500 mb-10px">Need help?</span>
+                        <span class="d-block">Need email support?</span>
+                        <a href="#contact-us" class="d-sm-inline-block d-block"><span>aaoverseasenterprises@gmail.com</span></a>
+                        <br><br>
+                        <span class="d-block">Need mobile support?</span>
+                        <a href="#contact-us" class="d-sm-inline-block d-block"><span>9849798055 - Ahmed Hashmi</span></a>
+                        <a href="#contact-us" class="d-sm-inline-block d-block"><span>9748653400 - Atif Hayat</span></a>
+                    </div>
+                    <!-- end footer column -->
+                </div> 
+            </div>
+        </footer>
+        <!-- end footer -->
+        <!-- start scroll progress -->
+        <div class="scroll-progress d-none d-xxl-block">
+            <a href="#" class="scroll-top" aria-label="scroll">
+                <span class="scroll-text">Scroll</span><span class="scroll-line"><span class="scroll-point"></span></span>
+            </a>
+        </div>
+        <!-- end scroll progress -->
+        <!-- javascript libraries -->
+        <script data-cfasync="false" src="cd/email-decode.min.js"></script><script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/vendors.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script>
+            feather.replace();
+        </script>
+        <script>
+            
+            document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent the default form submission
+
+                    // Check if required fields are filled
+                    const name = form.querySelector('input[name="name"]').value.trim();
+                    const email = form.querySelector('input[name="email"]').value.trim();
+                    const message = form.querySelector('textarea[name="message"]').value.trim();
+
+                    if (!name || !email || !message) {
+                        alert("Please fill in all required fields.");
+                        return; // Stop the submission if fields are empty
+                    }
+
+                    const formData = new FormData(form);
+
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            showToast("Message is sent, please visit again");
+                            form.reset(); // Reset the form after successful submission
+                        } else {
+                            showToast("There was a problem sending your message.");
+                        }
+                    })
+                    .catch(error => {
+                        showToast("There was a problem sending your message.");
+                    });
+                });
+            }
+
+            function showToast(message) {
+                const toast = document.createElement('div');
+                toast.className = 'toast';
+                toast.innerText = message;
+                document.body.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(toast);
+                    }, 500);
+                }, 3000);
+            }
+
+            const submitButton = document.getElementById('submitButton');
+
+            submitButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default button behavior
+
+        // Check if required fields are filled
+        const name = form.querySelector('input[name="name"]').value.trim();
+        const email = form.querySelector('input[name="email"]').value.trim();
+        const message = form.querySelector('textarea[name="message"]').value.trim();
+
+        if (!name || !email || !message) {
+            alert("Please fill in all required fields.");
+            return; // Stop animation if fields are empty
+        }
+
+        // Animate button
+        submitButton.classList.add("submitting");
+        submitButton.disabled = true;
+
+        // Simulate delay before submission
+        setTimeout(() => {
+            submitButton.classList.remove("submitting");
+            submitButton.classList.add("sent");
+            submitButton.querySelector("span").textContent = "Message Sent";
+
+            // Show thank-you popup
+            alert("Thank you! Your message has been sent successfully.");
+
+            // Submit form manually
+            form.submit();
+        }, 3000); // 3 seconds delay
+    });
+});
+        </script>
+    </body>
+</html>
