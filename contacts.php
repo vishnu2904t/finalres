@@ -9,14 +9,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!$email) {
         die("Invalid email format.");
     }
-
-    require 'vendor/autoload.php';
+    
+    require 'PHPMailer/PHPMailer.php';
+    require 'PHPMailer/SMTP.php';
+    require 'PHPMailer/Exception.php';
 
     use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
     $mail = new PHPMailer(true);
-
     try {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
@@ -33,11 +35,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Subject = "New Contact Form Message from $name";
         $mail->Body = "Name: $name\nEmail: $email\nPhone: $phone\nSubject: $subject\nMessage: $message\n";
 
-        $mail->send();
-        echo "Message sent successfully!";
+        if($mail->send()){
+            echo "Message sent successfully!";
+        } else {
+            echo "error sending message";
+        }
     } catch (Exception $e) {
-        echo "Error sending message: {$mail->ErrorInfo}";
+        echo "Error sending message: ".$mail->ErrorInfo;
     }
+} else {
+    echo "Invalid request.";
 }
 ?>
 
