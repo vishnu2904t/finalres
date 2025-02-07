@@ -1,27 +1,27 @@
-FROM php:8.2-cli
+# Use the official PHP-Apache image
+FROM php:8.1-apache
 
-# Set working directory
+# Enable required PHP extensions
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Set the working directory in the container
 WORKDIR /var/www/html
 
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-    unzip \
-    git \
-    && rm -rf /var/lib/apt/lists/*
+# Copy the project files to the container
+COPY . /var/www/html
 
 # Install PHPMailer using Composer
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-    && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
-    && php -r "unlink('composer-setup.php');"
-
-# Create a project directory
-RUN mkdir -p /var/www/html/project
-WORKDIR /var/www/html/project
-
-# Install PHPMailer
 RUN composer require phpmailer/phpmailer
 
-# Expose port (if using a web server like Apache or Nginx, modify accordingly)
-EXPOSE 9000
+# Give Apache necessary permissions
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html
 
-CMD ["php", "-a"]
+# Expose port 80 for Apache
+EXPOSE 80
+
+# Start Apache when the container runs
+CMD ["apache2-foreground"]
