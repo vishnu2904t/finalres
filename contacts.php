@@ -1,4 +1,12 @@
 <?php
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+require 'PHPMailer/Exception.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars($_POST["name"]);
     $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
@@ -9,14 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!$email) {
         die("Invalid email format.");
     }
-    
-    require 'PHPMailer/PHPMailer.php';
-    require 'PHPMailer/SMTP.php';
-    require 'PHPMailer/Exception.php';
-
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
-    use PHPMailer\PHPMailer\Exception;
 
     $mail = new PHPMailer(true);
     try {
