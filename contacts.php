@@ -1,17 +1,18 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $phone = $_POST["phone"];
-    $subject = $_POST["subject"];
-    $message = $_POST["message"];
+    $name = htmlspecialchars($_POST["name"]);
+    $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
+    $phone = htmlspecialchars($_POST["phone"]);
+    $subject = htmlspecialchars($_POST["subject"]);
+    $message = htmlspecialchars($_POST["message"]);
 
-    require 'PHPMailer/PHPMailer.php';
-    require 'PHPMailer/SMTP.php';
-    require 'PHPMailer/Exception.php';
+    if (!$email) {
+        die("Invalid email format.");
+    }
+
+    require 'vendor/autoload.php';
 
     use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
     $mail = new PHPMailer(true);
@@ -20,14 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'aaoverseasenterprises@gmail.com'; // Your Gmail address
-        $mail->Password = 'tybsphjgvbfqwcpu'; // Your App Password (remove spaces)
+        $mail->Username = 'aaoverseasenterprises@gmail.com'; // Use environment variable
+        $mail->Password = 'tybsphjgvbfqwcpu'; // Use environment variable
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Email details
-        $mail->setFrom($email, $name);
-        $mail->addAddress('aaoverseasenterprises@gmail.com'); // Your Gmail to receive messages
+        $mail->setFrom('aaoverseasenterprises@gmail.com', 'Website Contact Form');
+        $mail->addAddress('aaoverseasenterprises@gmail.com');
+        $mail->addReplyTo($email, $name);
         $mail->Subject = "New Contact Form Message from $name";
         $mail->Body = "Name: $name\nEmail: $email\nPhone: $phone\nSubject: $subject\nMessage: $message\n";
 
@@ -38,3 +40,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
