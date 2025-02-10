@@ -7,7 +7,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-// Set headers to handle AJAX request
+// Ensure no other output before JSON response
+ob_clean();
 header('Content-Type: application/json');
 
 // Load environment variables
@@ -23,23 +24,21 @@ if (file_exists($envFile)) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $response = array();
-    
-    $name = htmlspecialchars($_POST["name"]);
-    $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
-    $phone = htmlspecialchars($_POST["phone"]);
-    $subject = htmlspecialchars($_POST["subject"]);
-    $message = htmlspecialchars($_POST["message"]);
-
-    if (!$email) {
-        $response['status'] = 'error';
-        $response['message'] = 'Invalid email format.';
-        echo json_encode($response);
-        exit;
-    }
-
-    $mail = new PHPMailer(true);
     try {
+        $response = array();
+        
+        $name = htmlspecialchars($_POST["name"] ?? '');
+        $email = filter_var($_POST["email"] ?? '', FILTER_VALIDATE_EMAIL);
+        $phone = htmlspecialchars($_POST["phone"] ?? '');
+        $subject = htmlspecialchars($_POST["subject"] ?? '');
+        $message = htmlspecialchars($_POST["message"] ?? '');
+
+        if (!$email) {
+            throw new Exception('Invalid email format.');
+        }
+
+        $mail = new PHPMailer(true);
+        
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
@@ -55,23 +54,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Subject = "New Contact Form Message from $name";
         $mail->Body = "Name: $name\nEmail: $email\nPhone: $phone\nSubject: $subject\nMessage: $message\n";
 
-        if($mail->send()){
-            $response['status'] = 'success';
-            $response['message'] = 'Message sent successfully';
+        if($mail->send()) {
+            $response = [
+                'status' => 'success',
+                'message' => 'Message sent successfully'
+            ];
         } else {
-            $response['status'] = 'error';
-            $response['message'] = 'Error sending message';
+            throw new Exception('Failed to send message');
         }
+        
     } catch (Exception $e) {
-        $response['status'] = 'error';
-        $response['message'] = "Error sending message: " . $mail->ErrorInfo;
+        $response = [
+            'status' => 'error',
+            'message' => $e->getMessage()
+        ];
     }
     
     echo json_encode($response);
     exit;
 } else {
-    // Redirect to index.html if accessed directly
-    header('Location: index.html');
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Invalid request method'
+    ]);
     exit;
 }
 ?>

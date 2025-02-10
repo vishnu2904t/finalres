@@ -848,7 +848,18 @@
                         method: 'POST',
                         body: formData
                     })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text().then(text => {
+                            try {
+                                return JSON.parse(text);
+                            } catch (e) {
+                                throw new Error('Invalid response format');
+                            }
+                        });
+                    })
                     .then(data => {
                         if (data.status === 'success') {
                             // Stop loading animation and show success
@@ -868,7 +879,7 @@
                                 submitButton.querySelector(".button-text").textContent = "Send message";
                             }, 2000);
                         } else {
-                            throw new Error(data.message);
+                            throw new Error(data.message || 'Failed to send message');
                         }
                     })
                     .catch(error => {
