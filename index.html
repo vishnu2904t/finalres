@@ -45,23 +45,13 @@
             .submit-btn {
                 position: relative;
                 min-width: 150px;
+                overflow: hidden;
+                transition: background-color 0.3s ease;
             }
 
-            .submit-btn.submitting .spinner {
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .submit-btn.submitting span span {
-                opacity: 0;
-            }
-
-            .submit-btn.sent {
-                background-color: #28a745;
-            }
-
-            .submit-btn.sent span span {
-                opacity: 1;
+            .submit-btn .button-text {
+                display: inline-block;
+                transition: opacity 0.3s ease;
             }
 
             .submit-btn .spinner {
@@ -70,18 +60,37 @@
                 left: 50%;
                 width: 20px;
                 height: 20px;
-                border: 3px solid #fff;
-                border-top: 3px solid transparent;
+                border: 2px solid #ffffff;
+                border-top: 2px solid transparent;
                 border-radius: 50%;
-                animation: spin 1s linear infinite;
-                transform: translate(-50%, -50%);
                 opacity: 0;
                 visibility: hidden;
+                transform: translate(-50%, -50%);
+                transition: opacity 0.3s ease;
+                animation: spin 1s linear infinite;
+            }
+
+            .submit-btn.submitting .spinner {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .submit-btn.submitting .button-text {
+                opacity: 0;
+            }
+
+            .submit-btn.sent {
+                background-color: #28a745 !important;
+            }
+
+            .submit-btn:disabled {
+                cursor: not-allowed;
+                opacity: 0.7;
             }
 
             @keyframes spin {
-                from { transform: translate(-50%, -50%) rotate(0deg); }
-                to { transform: translate(-50%, -50%) rotate(360deg); }
+                0% { transform: translate(-50%, -50%) rotate(0deg); }
+                100% { transform: translate(-50%, -50%) rotate(360deg); }
             }
 
             #contact-us {
@@ -713,10 +722,8 @@
                                 <p class="text-center text-md-start fs-16 lh-24">We are committed to protecting your privacy. We will never collect information about you without your explicit consent.</p>
                             </div>
                             <div class="col-xl-5 col-md-5 text-center text-md-end sm-mt-20px">
-                                <button class="btn btn-large btn-dark-gray btn-box-shadow btn-round-edge btn-switch-text left-icon submit submit-btn" type="submit" id="submitButton">
-                                    <span>
-                                        <span class="btn-double-text" data-text="Send message">Send message</span>
-                                    </span>
+                                <button class="btn btn-large btn-dark-gray btn-box-shadow btn-round-edge submit-btn" type="submit" id="submitButton">
+                                    <span class="button-text">Send message</span>
                                     <div class="spinner"></div>
                                 </button>
                             </div>
@@ -847,7 +854,7 @@
                             // Stop loading animation and show success
                             submitButton.classList.remove("submitting");
                             submitButton.classList.add("sent");
-                            submitButton.querySelector("span span").textContent = "Message Sent";
+                            submitButton.querySelector(".button-text").textContent = "Message Sent";
                             
                             // Show success toast
                             showToast(data.message);
@@ -858,7 +865,7 @@
                                 // Reset button state
                                 submitButton.classList.remove("sent");
                                 submitButton.disabled = false;
-                                submitButton.querySelector("span span").textContent = "Send message";
+                                submitButton.querySelector(".button-text").textContent = "Send message";
                             }, 2000);
                         } else {
                             throw new Error(data.message);
