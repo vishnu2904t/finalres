@@ -915,10 +915,6 @@
             submitButton.classList.remove("submitting");
             submitButton.classList.add("sent");
             submitButton.querySelector("span").textContent = "Message Sent";
-
-            // Show thank-you popup
-            alert("Thank you! Your message has been sent successfully.");
-
             // Submit form manually
             form.submit();
         }, 3000); // 3 seconds delay
