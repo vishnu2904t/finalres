@@ -37,6 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if($mail->send()){
             echo "Message sent successfully!";
+            header("Location: index.html");
+            exit();
         } else {
             echo "error sending message";
         }
