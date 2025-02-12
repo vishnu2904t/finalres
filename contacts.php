@@ -1,4 +1,6 @@
 <?php
+ob_start(); // Start output buffering at the very beginning
+
 require 'PHPMailer-master/src/PHPMailer.php';
 require 'PHPMailer-master/src/SMTP.php';
 require 'PHPMailer-master/src/Exception.php';
@@ -36,11 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Body = "Name: $name\nEmail: $email\nPhone: $phone\nSubject: $subject\nMessage: $message\n";
 
         if($mail->send()){
-            echo "Message sent successfully!";
+            ob_end_clean(); // Clear the output buffer
             header("Location: index.html");
             exit();
         } else {
-            echo "error sending message";
+            echo "Error sending message";
         }
     } catch (Exception $e) {
         echo "Error sending message: ".$mail->ErrorInfo;
@@ -48,5 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Invalid request.";
 }
+ob_end_flush(); // Flush the output buffer at the end
 ?>
 
